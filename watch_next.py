@@ -9,10 +9,15 @@ with open("movies.txt","r+") as file:
 
 
 def decrip(description):
+
+    send_lists = []
     model_sentence = nlp(description)
     for sentence in mt_lists:
         similarity = nlp(sentence).similarity(model_sentence)
+        send_lists.append(similarity)
         print(sentence + "-", similarity)
+        print(f"This movie has the highest similarity: {max(send_lists)}\n")
+
 
     return model_sentence
 description = """Will he save their world or destroy it? When the Hulk becomes too dangerous for 
